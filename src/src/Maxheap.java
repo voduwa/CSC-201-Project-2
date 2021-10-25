@@ -79,7 +79,7 @@ public class Maxheap <E extends Comparable<? super E>> {
 
     //Remove and return maximum val
     E removeMax () {
-        if (num == 0) {return -1;} //removing from empty heap
+        if (num == 0) {return null;} //removing from empty heap
         swap(0, --num);
         siftDown(0);
         return heap[num];
@@ -87,7 +87,7 @@ public class Maxheap <E extends Comparable<? super E>> {
 
     //Remove and return element at specified position
     E remove (int pos) {
-        if ((pos < 0) || (pos >= num)) {return -1; }
+        if ((pos < 0) || (pos >= num)) {return null; }
         if (pos == (num -1)) {num--;}
         else {
             swap (pos, --num);
@@ -122,7 +122,5 @@ public class Maxheap <E extends Comparable<? super E>> {
         heap[spos] = tmp;
     }
 
-
-
-
+    //add toString for debugging
 }

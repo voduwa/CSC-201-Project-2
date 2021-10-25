@@ -1,6 +1,7 @@
 import java.io.FileNotFoundException;
 import java.io.BufferedReader;
 import java.io.FileWriter;
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner;
@@ -38,7 +39,19 @@ import java.io.FileReader;
     //static int input = 500000; //place holder number for file size
     //static int max_number = 5000000; //place holder number for maximum amount the memory can store
 
+    byte[] blockofdata = new byte[65536];
+    //read the data
 
+
+        Maxheap minHeap = new Maxheap();
+        //use for loop from i=0 to 512
+
+        for(int i = 0; i < 512;  i++){
+            minHeap.insert(new recordNode(Arrays.copyOfRange(blockofdata, i*16, i*16 + 16)));
+
+        }
+        //input and output buffers
+        run.bin;
 
     }
 }
