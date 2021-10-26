@@ -1,4 +1,4 @@
-public class recordNode extends Comparable{
+public class recordNode implements Comparable {
 
     private byte[] smallArray;
 
@@ -8,8 +8,8 @@ public class recordNode extends Comparable{
     }
 
 
-    //Need 16 bite array
-    //Need constructor
+
+
 
 
     @Override

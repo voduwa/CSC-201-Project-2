@@ -43,7 +43,7 @@ import java.io.FileReader;
     //read the data
 
 
-        Maxheap minHeap = new Maxheap();
+        Minheap minHeap = new Minheap();
         //use for loop from i=0 to 512
 
         for(int i = 0; i < 512;  i++){

@@ -1,11 +1,14 @@
 import java.util.Collections;
 
-public class Maxheap <E extends Comparable<? super E>> {
+public class Minheap <E extends Comparable<? super E>> {
     private E[] heap;       //heap pointer
     private int size;       //heap size
     private int num;        //number of things in the heap
 
-    public Maxheap (E[] heap, int size, int num){
+    public Minheap (){
+
+    }
+    public Minheap (E[] heap, int size, int num){
         this.heap = heap;
         this.size = size;
         this.num = num;
@@ -49,7 +52,7 @@ public class Maxheap <E extends Comparable<? super E>> {
         int curr = num++;
         heap[curr] = key;
 
-        while ((curr !=0) && (heap[curr].compareTo(heap[parent(curr)]) > 0)) {
+        while ((curr !=0) && (heap[curr].compareTo(heap[parent(curr)]) < 0)) {
             //Swap.swap(heap, curr, parent(curr));
             swap(curr, parent(curr));
             curr = parent(curr);
@@ -67,11 +70,11 @@ public class Maxheap <E extends Comparable<? super E>> {
         }
         while (!isLeaf(pos)){
             int j = leftChild(pos);
-            if ((j < (num-1)) && (heap[j].compareTo(heap[j+1]) < 0)){
+            if ((j < (num-1)) && (heap[j].compareTo(heap[j+1]) > 0)){
                 j++;
             }
 
-            if (heap[pos].compareTo(heap[j]) >= 0) {return;}
+            if (heap[pos].compareTo(heap[j]) <= 0) {return;}
             swap(pos, j);
             pos = j;
         }
@@ -106,7 +109,7 @@ public class Maxheap <E extends Comparable<? super E>> {
     // The value at pos has been changed, restore the heap property
     void update(int pos) {
         // If it is a big value, push it up
-        while ((pos > 0) && (heap[pos].compareTo(heap[parent(pos)]) > 0)) {
+        while ((pos > 0) && (heap[pos].compareTo(heap[parent(pos)]) < 0)) {
             swap(pos, parent(pos));
 
             pos = parent(pos);
