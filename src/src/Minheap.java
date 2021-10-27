@@ -1,6 +1,6 @@
 import java.util.Collections;
 
-public class Minheap <E extends Comparable<? super E>> {
+public class Minheap <E extends Comparable<E>> {
     private E[] heap;       //heap pointer
     private int size;       //heap size
     private int num;        //number of things in the heap
