@@ -1,5 +1,3 @@
-import java.util.Collections;
-
 public class Minheap <E extends Comparable<E>> {
     private E[] heap;       //heap pointer
     private int size;       //heap size

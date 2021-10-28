@@ -1,5 +1,4 @@
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner;
@@ -32,9 +31,6 @@ import java.util.Scanner;
     private static RandomAccessFile accessFile;
 
     public static void SortMain (String file) {
-
-    //static int input = 500000; //place holder number for file size
-    //static int max_number = 5000000; //place holder number for maximum amount the memory can store
 
     byte[] blockofdata = new byte[65536]; // this is one block of data
     byte[] inputBuffer = new byte[8192];
