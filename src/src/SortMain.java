@@ -37,8 +37,9 @@ import java.util.Scanner;
     //static int max_number = 5000000; //place holder number for maximum amount the memory can store
 
     byte[] blockofdata = new byte[65536]; // this is one block of data
-    byte[] inputBuffer;
-    byte[] outputBuffer;
+    byte[] inputBuffer = new byte[8192];
+    byte[] outputBuffer = new byte[8192];
+    recordNode[] recordBuffer = new recordNode[512];
     //read the data
 
         try {
@@ -59,7 +60,7 @@ import java.util.Scanner;
                 e.printStackTrace();
             }
 
-            //insert into min heap
+            //insert 1 block into min heap
             for (int i = 0; i < 512; i++) {
                 minHeap.insert(new recordNode(Arrays.copyOfRange(blockofdata, i * 16, i * 16 + 16)));
 
@@ -69,10 +70,14 @@ import java.util.Scanner;
         //sizeofOutput
         //input Buffer = byte[] 8192
         //output Buffer = byte[] 8192
-
-
-        //input and output buffers
-
-
+        try {
+            accessFile.read(inputBuffer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //Make inputBuffer into records
+        for (int i = 0; i < recordBuffer.length; i++){
+            recordBuffer[i] = new recordNode(Arrays.copyOfRange(inputBuffer, i * 16, i*16 + 16));
+        }
     }
 }

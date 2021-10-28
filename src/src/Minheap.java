@@ -20,6 +20,14 @@ public class Minheap <E extends Comparable<E>> {
 
     public int getNum() {return this.num;}
 
+    public E[] getHeap() {
+        return heap;
+    }
+
+    public E getRoot (){
+        return heap[0];
+    }
+
     //Checks to see if position is a leaf node
     public boolean isLeaf(int pos){
         return (pos >= num/2) && (pos < num);
@@ -81,12 +89,13 @@ public class Minheap <E extends Comparable<E>> {
     }
 
     //Remove and return maximum val
-    E removeMax () {
+    E removeMin () {
         if (num == 0) {return null;} //removing from empty heap
         swap(0, --num);
         siftDown(0);
         return heap[num];
     }
+
 
     //Remove and return element at specified position
     E remove (int pos) {

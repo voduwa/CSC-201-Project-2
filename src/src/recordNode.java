@@ -1,4 +1,4 @@
-public class recordNode implements Comparable {
+public class recordNode implements Comparable<recordNode> {
 
     private byte[] smallArray;
     long getID;
@@ -15,15 +15,14 @@ public class recordNode implements Comparable {
         this.getKey = getKey;
     }
 
-
-
+    public byte[] getSmallArray() {
+        return smallArray;
+    }
 
 
 
     @Override
-    public int compareTo(Object o) {
+    public int compareTo(recordNode o) {
         return 0;
     }
-
-
 }
