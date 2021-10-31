@@ -1,3 +1,5 @@
+import java.nio.ByteBuffer;
+
 public class recordNode implements Comparable<recordNode> {
 
     private byte[] smallArray;
@@ -7,6 +9,13 @@ public class recordNode implements Comparable<recordNode> {
     //Create constructor with array
     public recordNode(byte[] copyOfRange){
         smallArray = copyOfRange;
+        ByteBuffer buff = ByteBuffer.wrap(smallArray);
+        getID = buff.getLong();
+        getKey = buff.getDouble(8);
+    }
+
+    public double getGetKey() {
+        return getKey;
     }
 
     public recordNode(byte[] copyOfRange, long getID, double getKey) {
@@ -23,6 +32,6 @@ public class recordNode implements Comparable<recordNode> {
 
     @Override
     public int compareTo(recordNode o) {
-        return 0;
+        return Double.compare(this.getKey, o.getKey);
     }
 }

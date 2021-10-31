@@ -1,11 +1,4 @@
-public class ReplacementSelection {
+public class ReplacementSelection <E extends Comparable> {
 
-    public static void ReplacementSelection(Minheap myHeap, recordNode [] inputBuffer, recordNode[] outputBuffer) {
-        int i = 0;
-        while (myHeap.heapSize() > 0) {
-            while (inputBuffer.length > 0) {
-
-            }
-        }
-    }
+//dont need this class
 }

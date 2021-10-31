@@ -1,6 +1,6 @@
 import java.util.Collections;
 
-public class Minheap <E extends Comparable<E>> {
+public class Minheap <E extends Comparable> {
     private E[] heap;       //heap pointer
     private int size;       //heap size
     private int num;        //number of things in the heap
@@ -34,25 +34,25 @@ public class Minheap <E extends Comparable<E>> {
     }
 
     //Return position for left child of pos
-    int leftChild (int pos){
+    public int leftChild (int pos){
         if (pos >= num/2) {return -2;}
         return 2*pos + 1;
     }
 
     //Return position for right child of pos
-    int rightChild (int pos) {
+    public int rightChild (int pos) {
         if (pos >= (num - 1)/2) {return -1;}
         return 2*pos + 2;
     }
 
     //Return position for parent
-    int parent (int pos) {
+    public int parent (int pos) {
         if (pos <= 0) {return -1;}
         return (pos - 1)/2;
     }
 
     //Insert val into heap
-    void insert (E key){
+    public void insert (E key){
         if (num >= size){
             System.out.println("Heap is full");
             return;
@@ -68,11 +68,11 @@ public class Minheap <E extends Comparable<E>> {
     }
 
     //Heapify contents of Heap
-    void buildHeap ()
+    public void buildHeap ()
     {for (int i = num/2-1; i>=0 ; i--) {siftDown(i);}}
 
     //Put element in its correct place
-    void siftDown(int pos) {
+    public void siftDown(int pos) {
         if ((pos < 0) || (pos >=num)) {
             return; // illegal position
         }
@@ -89,16 +89,17 @@ public class Minheap <E extends Comparable<E>> {
     }
 
     //Remove and return maximum val
-    E removeMin () {
+    public E removeMin () {
         if (num == 0) {return null;} //removing from empty heap
         swap(0, --num);
+        E temp = heap[num];
         siftDown(0);
-        return heap[num];
+        return temp;
     }
 
 
     //Remove and return element at specified position
-    E remove (int pos) {
+    public E remove (int pos) {
         if ((pos < 0) || (pos >= num)) {return null; }
         if (pos == (num -1)) {num--;}
         else {
@@ -108,15 +109,16 @@ public class Minheap <E extends Comparable<E>> {
         return heap[num];
     }
 
+
     //Modify the value at the given position
-    void modify(int pos, E newVal) {
+    public void modify(int pos, E newVal) {
         if ((pos < 0) || (pos >= num)) { return; } // Illegal heap position
         heap[pos] = newVal;
         update(pos);
     }
 
     // The value at pos has been changed, restore the heap property
-    void update(int pos) {
+    public void update(int pos) {
         // If it is a big value, push it up
         while ((pos > 0) && (heap[pos].compareTo(heap[parent(pos)]) < 0)) {
             swap(pos, parent(pos));
